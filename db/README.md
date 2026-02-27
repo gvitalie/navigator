@@ -112,7 +112,55 @@ drwxrwxr-x 15 me me     4096 Feb 27 09:45 ../
 me@amadeus:~/Tutor/Om$
 ```
 > To do, show how to insert projects name from file pypkgs.txt to new created database pypkgs.db table pypkgs.
-```bash
+```python
+me@amadeus:~$ cd Tutor/Om/
+me@amadeus:~/Tutor/Om$ ll
+total 48500
+drwxrwxr-x  2 me me     4096 Feb 27 10:04 ./
+drwxrwxr-x 15 me me     4096 Feb 27 09:45 ../
+-rw-r--r--  1 me me     8192 Feb 27 10:04 pypkgs.db
+-rw-rw-r--  1 me me 38841504 Feb 27 09:51 pypkgs.html
+-rw-rw-r--  1 me me 10798867 Feb 27 09:56 pypkgs.txt
 me@amadeus:~/Tutor/Om$ python3 -q
+>>> import sqlite3
 >>> 
+>>> with sqlite3.connect('pypkgs.db') as db:
+...     cursor = db.cursor()
+...     query = 'insert into pypkgs (pypkg) values (?)'
+...     with open('pypkgs.txt', 'r') as file:
+...             for line in file:
+...                     cursor.execute(query, (line.strip(),))
+... 
+<sqlite3.Cursor object at 0x784fa10a08c0>
+<sqlite3.Cursor object at 0x784fa10a08c0>
+<sqlite3.Cursor object at 0x784fa10a08c0>
+<sqlite3.Cursor object at 0x784fa10a08c0>
+<sqlite3.Cursor object at 0x784fa10a08c0>
+<sqlite3.Cursor object at 0x784fa10a08c0>
+<sqlite3.Cursor object at 0x784fa10a08c0>
+>>> # 🫜
+>>> 
+me@amadeus:~/Tutor/Om$ 
 ```
+> Final step, checking integrity.
+```bash
+me@amadeus:~/Tutor/Om$ sqlite3 pypkgs.db 
+SQLite version 3.51.2 2026-01-09 17:27:48
+Enter ".help" for usage hints.
+sqlite> .tables
+pypkgs
+sqlite> .schema pypkgs
+CREATE TABLE pypkgs (id integer primary key, pypkg text);
+sqlite> 
+sqlite> select * from pypkgs limit 1, 5;
+2|0-0
+3|000
+4|0-0-1
+5|00101s
+6|001-hello-uv
+sqlite> select count(*) from pypkgs;
+749719
+sqlite> .quit
+me@amadeus:~/Tutor/Om$ 
+```
+> Done.
