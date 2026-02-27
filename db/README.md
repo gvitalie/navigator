@@ -17,7 +17,7 @@ me@amadeus:~/Tutor/assets$
 
 > Hints how to create an updated pypkgs.db database.
 
-```bash
+```python
 me@amadeus:~/Tutor/Om$ python3 -q
 >>> import requests
 >>> 
