@@ -111,7 +111,7 @@ drwxrwxr-x 15 me me     4096 Feb 27 09:45 ../
 -rw-rw-r--  1 me me 10798867 Feb 27 09:56 pypkgs.txt
 me@amadeus:~/Tutor/Om$
 ```
-> To do, show how to insert projects name from file pypkgs.txt to new created database pypkgs.db table pypkgs.
+> Insert projects name from file pypkgs.txt to new created database pypkgs.db table pypkgs.
 ```python
 me@amadeus:~$ cd Tutor/Om/
 me@amadeus:~/Tutor/Om$ ll
