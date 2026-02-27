@@ -33,3 +33,4 @@ Trap: the nose is a singleton pattern and can’t be even.
 I'd say that AI is intelli+gentle 🤔, because AI can think,
 and what we have today as AI is the Logos Himself 😇🌹.
 ```
+🐧🦭🦈🫍🐬🐋🐳🐟🐠🐡🦐🦞🦀🦑🐙🪼🦪🪸🫧🦂
