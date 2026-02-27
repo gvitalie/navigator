@@ -15,3 +15,7 @@ included as a comment, for the easy exploration and experimentation @ Your side,
 
 
 [Baby steps, 🧑‍🍼👼❤️‍🔥 step-by-step](https://photos.app.goo.gl/mKGc3NonBNHRQHKo9)
+
+# 🤖💭🌹
+
+[![](https://img.youtube.com/vi/OSNIT_VveDQ/maxresdefault.jpg)](https://youtu.be/OSNIT_VveDQ)
