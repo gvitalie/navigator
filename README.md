@@ -3,7 +3,7 @@
 that can access extremely FAST and EASY (time 0)  
 even INFINITELY wide amounts of INFORMATION [#19586](https://github.com/pypi/warehouse/issues/19586)  
 
-💋 Kiss = keep it stupid simple.
+[💋](https://www.youtube.com/watch?v=Vo1LyfwrWjw) Kiss = keep it stupid simple.
 
 Demo => Aa: https://gvitalie.pythonanywhere.com/
 
