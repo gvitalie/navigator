@@ -12,3 +12,7 @@ CREATE TABLE pypkgs (id integer primary key, pypkg text);
 sqlite> .quit
 me@amadeus:~/Tutor/assets$
 ```
+> Hints
+```bash
+grep -o 'href="/simple/[^/]*' pypkgs.html | sed 's|href="/simple/||' | tee pypkgs.txt
+```
