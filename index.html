@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aa</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <style>
+        body, html {
+            overflow: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: calc(100vw - 30px);
+            height: calc(100vh - 50px);
+            box-sizing: border-box;
+            /* border: 1px solid green; */
+            /* border-radius: 20px; */
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 75%;
+            min-height: 100%;
+            border: 1px solid green;
+            border-radius: 20px;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 20%;
+            background-color: #E0E7FF;
+            border-radius: 20px 20px 0 0;
+            /* border: 1px solid green;
+            border-radius: 20px; */
+        }
+        .search {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        #search {
+            line-height: 2;
+            font-size: 1.2em;
+            color: green;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 2px 2px 4px #000000;
+        }
+        .pagination {
+            border: 1px solid green;
+            width: 200px;
+        }
+        .description {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            padding: 80px;
+            overflow-y: scroll;
+            box-sizing: border-box;
+            background-color: #E0E7FF;
+            border-radius: 0 0 20px 20px;
+            /* border: 1px solid green;
+            border-radius: 20px; */
+        }
+        .description pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            width: 100%;
+            overflow-wrap: break-word;
+        }
+        .description pre code {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            width: 100%;
+            display: block;
+        }
+        .description img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .pagination {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            border: 1px solid green;
+            border-radius: 20px 20px 0 0;
+            height: 100%;
+        }
+        .navigator {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 20%;
+            background-color: #9fef0833;
+            border-radius: 20px 20px 0 0;
+        }
+        .navigator span:hover {
+            cursor: pointer;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .position, .offset {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-info {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #99f5f9b3;
+            color: #7008E7;
+        }
+        .index {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 30px;
+            overflow-y: scroll;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            font-size: 1.2em;
+            height: 100%;
+            background-color: #9fef0833;
+            border-radius: 0 0 20px 20px;
+            /* border: 1px solid green; */
+        }
+        .index a:hover {
+            background-color: #FFB93B;
+        }
+        .clicked {
+            background-color: #ED6AFF
+        }
+        .visited {
+          background-color: #BBF451;
+        }
+        fieldset {
+          border-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div><i>information by mouse click is accessible as silence by anyone: O(1) navigation</i>⛵</div>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <div class="search">
+                    <input type="text" name="search" id="search"
+                    placeholder="Search a_%" size="50">
+                </div>
+            </div>
+            <div class="description" id="description"></div>
+        </div>
+        <div class="pagination">
+            <div class="navigator">
+              <fieldset>
+                <legend style="font-size: 1.6em;">🧭</legend>
+                <div class="nav-info">Offset:<div class="offset">0</div></div>
+                <div class="nav-info">Position:<div class="position">0</div></div>
+                <div class="m2" data-offset="0"></div>
+                <div class="m3" data-offset="0"></div>
+                <div class="m4" data-offset="0"></div>
+                <div class="m5" data-offset="0"></div>
+                <div class="m6" data-offset="0"></div>
+              </fieldset>
+            </div>
+            <div class="index"></div>
+        </div>
+    </div>
+    <script>
+
+        function generate_navigator(field, multiplier){
+            for (let i = 0; i < 10; i++){
+                const span = document.createElement('span');
+                span.textContent = `🟧`;
+                if (i === 0) {span.textContent = '🟪'};
+                let offset = i * (10 ** multiplier);
+                span.dataset.offset = offset;
+                span.title = `${i} * 10^${multiplier}`;
+                field.appendChild(span);
+            }
+        }
+
+        //Generate navigator
+        for (let i = 2; i <= 6; i++){
+          const m = document.querySelector(`.m${i}`)
+          generate_navigator(m, i);
+        }
+
+        function navigator_controller(field){
+          field.forEach(span => {
+              span.addEventListener('click', (event) => {
+                  field.forEach(elm => {
+                      elm.textContent = '🟧';
+                  });
+                  span.textContent = '🟪';
+                  span.parentElement.dataset.offset = span.dataset.offset;
+                  document.querySelector('.offset').innerHTML = get_offset();
+                  // console.log(span.dataset.offset, span.parentElement.dataset.offset);
+                  get_pypkgs(get_offset());
+              });
+              span.addEventListener('mouseover', (event) => {
+                  document.querySelector('.position').innerHTML = span.dataset.offset;
+              });
+              span.addEventListener('mouseout', (event) => {
+                  document.querySelector('.position').innerHTML = 0;
+              })
+          })
+        }
+
+        // Set navigator behavior
+        for (let i = 2; i <= 6; i++) {
+          const mc = document.querySelectorAll(`.m${i} span`);
+          navigator_controller(mc)
+        }
+
+        function get_offset(){
+          let offset = 0;
+          for (let i = 2; i <= 6; i++){
+            let m = document.querySelector(`.m${i}`);
+            offset += Number(m.dataset.offset);
+          }
+          return offset;
+        }
+
+        function generate_links(data){
+            const index = document.querySelector('.index');
+            index.innerHTML = '';
+            for (let pypkg in data.pypkgs){
+                let link = document.createElement('a');
+                link.href = `https://pypi.org/pypi/${data.pypkgs[pypkg][0]}/json`;
+                link.textContent = `${data.pypkgs[pypkg][0]}`;
+                index.appendChild(link);
+            }
+            index.scrollTop = 0;
+        }
+
+        function get_pypkg_info(url){
+            let description = document.querySelector('.description');
+            fetch(url)
+            .then(response => {
+            if (!response.ok) {
+              // Handle non-200 responses (like 404 or 500)
+              description.innerHTML = `Package not found: ${response.status}`;
+              throw new Error(`Package not found: ${response.status}`);
+            }
+            return response.json();
+            })
+            .then(data => {
+              if (data?.info?.description){
+                  description.innerHTML = marked.parse(data.info.description);
+                  description.scrollTop = 0;
+              } else {
+                  description.innerHTML = `No description`;
+              }
+            })
+            .catch(error => console.log('Hups!', error))
+            }
+
+        function parse_links(){
+            const links = document.querySelectorAll('.index a');
+            links.forEach(link => {
+                link.addEventListener('click', function (event){
+                    event.preventDefault();
+                    links.forEach(l => {
+                        if (l.classList.contains('clicked')) {
+                          l.classList.add('visited');
+                        }
+                        l.classList.remove('clicked');
+                    });
+                    this.classList.remove('visited');
+                    this.classList.add('clicked');
+                    get_pypkg_info(this.href);
+                })
+            })
+        }
+
+        function preset_navigator(preset){
+            for (let i = 2; i <= 6; i++){
+                const mc = document.querySelectorAll(`.m${i} span`);
+                mc.forEach(span => {
+                    if (span.textContent !== '🟪'){
+                        span.classList.remove('preset');
+                        span.textContent = '🟧';
+                    }
+                });
+                mc[preset[i]].classList.add('preset');
+                if (mc[preset[i]].textContent !== '🟪'){
+                    mc[preset[i]].textContent = '🟩';
+                }
+            }
+        }
+
+        function get_pypkgs(offset){
+            const params = new URLSearchParams();
+            params.append('start', offset);
+            params.append('keyword', search.value);
+
+            const url = `/pypkgs?${params.toString()}`;
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                generate_links(data);
+                parse_links();
+                let preset = data.preset[0].toString();
+                preset = preset.padStart(7, 0).split('')
+                    .reverse().map(digit => Number(digit));
+                // console.log(preset);
+                preset_navigator(preset);
+            })
+            .catch(error => console.error('Error:', error));
+        };
+
+        let search = document.querySelector('input');
+        search.addEventListener('keydown', (event) => {
+            if (event.keyCode === 13 && search.value) {
+                event.preventDefault();
+                // console.log(search.value);
+                get_pypkgs(0);
+            }
+            if (event.key === "Escape") {
+              event.target.value = "";  // Clear the input field
+            }
+        });
+        // Fill index with links at start.
+        get_pypkgs(0);
+
+        document.addEventListener("DOMContentLoaded", function() {
+          search.focus();
+        });
+    </script>
+    <script>
+        // # PRO BONO PUBLICO
+        // # Here is the backend source code of this web interface.
+        // # Backend use Bottle Python framework: https://bottlepy.org/docs/dev/
+        // # You can copy and modify this code for any EviL or GooD purpose, 😇🌹😈
+        //
+        // from bottle import route, run, view, response, request
+        // import sqlite3
+        //
+        // @route('/')
+        // @view('index_3')
+        // def index():
+        //     return dict()
+        //
+        // get_pypkgs_count = 'select count(*) from pypkgs where pypkg like ?'
+        // get_pypkgs_query = 'select pypkg from pypkgs where pypkg like ? limit ?, 100'
+        // @route('/pypkgs')
+        // def get_pypkgs():
+        //     start = request.query.start
+        //     keyword = request.query.keyword
+        //     if (not keyword): keyword = '%'
+        //     print(start)
+        //     with sqlite3.connect('pypkgs.db') as db:
+        //         cursor = db.cursor()
+        //         cursor.execute(get_pypkgs_count, (keyword,))
+        //         preset = cursor.fetchone()
+        //         cursor.execute(get_pypkgs_query, (keyword, start))
+        //         marketplace = cursor.fetchall()
+        //     return {'pypkgs': marketplace, 'preset': preset}
+        //
+        // run(host='localhost', port=8080)
+    </script>
+    <script>
+        // # Markdown note: Just for Fun 🙃!
+        // # Part 1: Zero is odd or even number? | by Aa | Medium:
+        // # https://medium.com/@gvitalie/part-1-zero-is-odd-or-even-number-6e316b04bcbd
+        //
+        // # 🫖☕🍰
+        //
+        // me@amadeus:~$ python3 -q
+        // >>> import math 🫜
+        // >>>
+        // >>> φ = 0
+        // >>> for _ in range(3):
+        // ...     φ += math.cos(3/2 + φ)
+        // ...
+        // >>> print(f"{2 * φ:.15}")
+        // 0.141592653589793🌻🐝🍯
+        // >>>
+        // >>> φ = 0
+        // >>> for _ in range(3):
+        // ...     φ += math.sin(3 + φ)
+        // ...
+        // >>> print(f"{φ:.15}")
+        // 0.141592653589793🌻🐝🍯
+        // >>>
+        // me@amadeus:~$
+    </script>
+</body>
+</html>
