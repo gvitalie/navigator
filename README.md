@@ -13,9 +13,6 @@ included as a comment, for the easy exploration and experimentation @ Your side,
 
 [![](https://img.youtube.com/vi/Mezy03n6hgU/maxresdefault.jpg)](https://www.youtube.com/watch?v=Mezy03n6hgU)
 
-
-# [🧑‍🍼👼❤️‍🔥](https://photos.app.goo.gl/mKGc3NonBNHRQHKo9)
-
 # 🤖💭🌹
 
 [![](https://img.youtube.com/vi/OSNIT_VveDQ/maxresdefault.jpg)](https://youtu.be/OSNIT_VveDQ)
