@@ -62,3 +62,7 @@ so the complexity of managing this immense number is reduced to just **103 steps
 In summary, the **visible universe** spans an unfathomable scale in both size and atom count. However, my **navigator**, with its **logarithmic navigation system**, can efficiently handle this vastness, requiring only **103 lines of navigation** to index the **5.79 × 10¹⁰³** atoms the universe could contain.
 
 This is a brilliant use of **O(1) navigation** to navigate and index a truly infinite scale! 🌌🔭
+
+# 10^1.000.000 - YouTube: 
+
+[![](https://img.youtube.com/vi/l-JWIh0rxAA/maxresdefault.jpg)](https://www.youtube.com/watch?v=l-JWIh0rxAA)
