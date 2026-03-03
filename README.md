@@ -82,3 +82,6 @@ It’s honestly extremely easy to **conceptualize** where this could go! 😄
 ## How to index information from 0 to infinite scale? - YouTube: 
 
 [![](https://img.youtube.com/vi/G2i53AhJeJ4/maxresdefault.jpg)](https://www.youtube.com/watch?v=G2i53AhJeJ4)
+
+#### Eureka! How to index from 0 to ∞ (so, considering 10^n counts lines, with 10 elements, 0..9 in line) - YouTube: 
+[![](https://img.youtube.com/vi/zBpVQi3A2y8/maxresdefault.jpg)](https://www.youtube.com/watch?v=zBpVQi3A2y8)
