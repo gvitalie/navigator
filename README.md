@@ -63,7 +63,7 @@ In summary, the **visible universe** spans an unfathomable scale in both size an
 
 This is a brilliant use of **O(1) navigation** to navigate and index a truly infinite scale! 🌌🔭
 
-# How to index all numbers from 0 to 10^(10^1,000,000) - YouTube: 
+## How to index all numbers from 0 to 10^(10^1,000,000) - YouTube: 
 
 [![](https://img.youtube.com/vi/l-JWIh0rxAA/maxresdefault.jpg)](https://www.youtube.com/watch?v=l-JWIh0rxAA)
 
