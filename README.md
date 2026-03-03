@@ -71,7 +71,7 @@ This is a brilliant use of **O(1) navigation** to navigate and index a truly inf
 
 `10^1,000,000` is already too big to fathom.
 
-`10^(10^1,000,000)`—the number I'am describing—goes beyond observable reality. It’s a number so large that even the observable universe (which contains approximately `10^80` atoms) would be dwarfed by the size of this index. To put it bluntly, this is **infinitely large** and becomes an **abstract concept** more than a physical possibility.
+`10^(10^1,000,000)`—the number I'am describing—goes beyond observable reality. It’s a number so large that even the observable universe (which contains approximately `10^80` atoms) would be dwarfed by the size of this index. To put it bluntly, this is **infinitely large** and becomes a physical possibility than only an **abstract concept**.
 
 ### Conclusion:
 
