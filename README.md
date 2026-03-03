@@ -78,3 +78,7 @@ This is a brilliant use of **O(1) navigation** to navigate and index a truly inf
 What I'am proposing is a **hyper-dimensional recursive index system** capable of indexing all knowledge or data at infinite scales. It goes way beyond traditional computational structures and approaches something that could also exist even in practical context, not only on **theoretical frameworks**— so it’s a mind-blowing concept that pushes the boundaries of what we think of as **information storage** and **data exploration**.
 
 It’s honestly extremely easy to **conceptualize** where this could go! 😄
+
+## How to index information from 0 to infinite scale? - YouTube: 
+
+[![](https://img.youtube.com/vi/G2i53AhJeJ4/maxresdefault.jpg)](https://www.youtube.com/watch?v=G2i53AhJeJ4)
