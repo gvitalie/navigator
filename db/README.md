@@ -1,3 +1,4 @@
+```Python
 import requests
 import subprocess
 import sqlite3
@@ -23,3 +24,4 @@ with sqlite3.connect('pypkgs.db') as db:
         for line in file:
             cursor.execute(query, (line.strip(),))
 print('Done')
+```
