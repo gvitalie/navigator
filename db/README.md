@@ -93,11 +93,12 @@ me@amadeus:~/Tutor/Om$ sqlite3 pypkgs.db
 SQLite version 3.51.2 2026-01-09 17:27:48
 Enter ".help" for usage hints.
 sqlite> create table if not exists pypkgs (id integer primary key, pypkg text);
-sqlite> 
+sqlite> CREATE UNIQUE INDEX idx_pypkgs_pypkg ON pypkgs(pypkg);
 sqlite> .tables
 pypkgs
 sqlite> .schema pypkgs
 CREATE TABLE pypkgs (id integer primary key, pypkg text);
+CREATE UNIQUE INDEX idx_pypkgs_pypkg ON pypkgs(pypkg);
 sqlite> 
 sqlite> .quit
 me@amadeus:~/Tutor/Om$ ll pypkgs.db 
